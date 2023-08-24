@@ -37,10 +37,8 @@ def newController():
     """
     Crea una instancia del modelo
     """
-    control = {
-        'model': None
-    }
-    control['model'] = model.newCatalog()
+    control = {"model": None}
+    control["model"] = model.newCatalog()
     return control
 
 
@@ -52,7 +50,7 @@ def loadData(control):
     Carga los datos de los archivos y cargar los datos en la
     estructura de datos
     """
-    catalog = control['model']
+    catalog = control["model"]
     books, authors = loadBooks(catalog)
     tags = loadTags(catalog)
     booktags = loadBooksTags(catalog)
@@ -66,8 +64,8 @@ def loadBooks(catalog):
     cada uno de ellos, se crea en la lista de autores, a dicho autor y una
     referencia al libro que se esta procesando.
     """
-    booksfile = cf.data_dir + 'GoodReads/books-small.csv'
-    input_file = csv.DictReader(open(booksfile, encoding='utf-8'))
+    booksfile = cf.data_dir + "GoodReads/books.csv"
+    input_file = csv.DictReader(open(booksfile, encoding="utf-8"))
     for book in input_file:
         model.addBook(catalog, book)
     return model.bookSize(catalog), model.authorSize(catalog)
@@ -77,8 +75,8 @@ def loadTags(catalog):
     """
     Carga todos los tags del archivo y los agrega a la lista de tags
     """
-    tagsfile = cf.data_dir + 'GoodReads/tags.csv'
-    input_file = csv.DictReader(open(tagsfile, encoding='utf-8'))
+    tagsfile = cf.data_dir + "GoodReads/tags.csv"
+    input_file = csv.DictReader(open(tagsfile, encoding="utf-8"))
     for tag in input_file:
         model.addTag(catalog, tag)
     return model.tagSize(catalog)
@@ -88,8 +86,8 @@ def loadBooksTags(catalog):
     """
     Carga la información que asocia tags con libros.
     """
-    booktagsfile = cf.data_dir + 'GoodReads/book_tags-small.csv'
-    input_file = csv.DictReader(open(booktagsfile, encoding='utf-8'))
+    booktagsfile = cf.data_dir + "GoodReads/book_tags.csv"
+    input_file = csv.DictReader(open(booktagsfile, encoding="utf-8"))
     for booktag in input_file:
         model.addBookTag(catalog, booktag)
     return model.bookTagSize(catalog)
@@ -105,11 +103,12 @@ def sortBooks(catalog):
 
 # Funciones de consulta sobre el catálogo
 
+
 def getBooksByAuthor(control, authorname):
     """
     Retrona los libros de un autor
     """
-    author = model.getBooksByAuthor(control['model'], authorname)
+    author = model.getBooksByAuthor(control["model"], authorname)
     return author
 
 
@@ -117,7 +116,7 @@ def getBestBooks(control, number):
     """
     Retorna los mejores libros
     """
-    bestbooks = model.getBestBooks(control['model'], number)
+    bestbooks = model.getBestBooks(control["model"], number)
     return bestbooks
 
 
@@ -125,4 +124,4 @@ def countBooksByTag(control, tag):
     """
     Retorna los libros que fueron etiquetados con el tag
     """
-    return model.countBooksByTag(control['model'], tag)
+    return model.countBooksByTag(control["model"], tag)
