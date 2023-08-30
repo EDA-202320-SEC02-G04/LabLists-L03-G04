@@ -33,7 +33,7 @@ This repository is part of the data structure and algorithms (#EDA) teaching fra
 The students edit this section to add their names, Uniandes emails, and specify which project functionality of the project they will implement.
 
     1. Student #1, Juan Esteban Rios Gonzalez, je.riosg1@uniandes.edu.co, 202221404
-    2. Student #2, Alejandra Fruto Osorio, a.fruto@uniandes.edu.co, 202311287
+    2. Student #2, Alejandra Fruto Osorio, a.fruto@uniandes.edu.co, 20231128
 
 [Back to top](#sample-list)
 
